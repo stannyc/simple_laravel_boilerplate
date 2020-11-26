@@ -14,4 +14,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
+
+
+
+
+
+    Route::get('/register', function(){
+        return response("redirect");
+    });
 });

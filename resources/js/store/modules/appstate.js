@@ -1,7 +1,8 @@
 const state = {
     isSideMenuOpen: false,
     isPagesMenuOpen: false,
-    isNotificationsMenuOpen: false
+    isNotificationsMenuOpen: false,
+    isProfileMenuOpen: false
 };
 
 const mutations = {
@@ -14,28 +15,31 @@ const mutations = {
     togglePagesMenu(state, payload) {
         return (state.isPagesMenuOpen = !state.isPagesMenuOpen);
     },
+    closePagesMenu(state, payload) {
+        return state.state.isPagesMenuOpen = false;
+    },
     toggleNotificationsMenu(state) {
         return (state.isNotificationsMenuOpen = !state.isNotificationsMenuOpen);
     },
-    toggleProfileMenu(state){
-        return state.isNotificationsMenuOpen = !state.isNotificationsMenuOpen;
+    closeNotificationsMenu(state) {
+        return (state.isNotificationsMenuOpen = false);
     },
-    closeNotificationsMenu(state){
-        return state.isNotificationsMenuOpen = false;
+    toggleProfileMenu(state) {
+        return (state.isProfileMenuOpen = !state.isProfileMenuOpen);
+    },
+    closeProfileMenu(state) {
+        return (state.isProfileMenuOpen = false);
     }
-    /*    setSessionString(state, payload){
-       state.session_string = payload;
-   },
-   setChatId(state, payload){
-       state.chat_id = payload;
-   } */
 };
 
 const actions = {};
 
 const getters = {
-    isNotificationsMenuOpen(state){
-        return state.isNotificationsMenuOpen
+    isProfileMenuOpen(state) {
+        return state.isProfileMenuOpen;
+    },
+    isNotificationsMenuOpen(state) {
+        return state.isNotificationsMenuOpen;
     },
     isPagesMenuOpen(state) {
         return state.isPagesMenuOpen;
@@ -43,12 +47,6 @@ const getters = {
     isSideMenuOpen(state) {
         return state.isSideMenuOpen;
     }
-    /*     getChatId(state){
-        return state.chat_id;
-    },
-    getSessionString(state){
-        return state.session_string;
-    } */
 };
 
 export default {
