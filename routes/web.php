@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Web')->group(function () {
     Route::get('/', function () {
-        return response(apiBaseUrl());
+        return view('welcome');
     })->name('welcome');
 });

@@ -25,5 +25,14 @@
         "tailwindcss": "^1.8.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "vuex": "^3.6.0",
+        "moment": "^2.29.1",
+        "vue-moment": "^4.1.0",
+        "vue-upload-component": "^2.8.20",
+        "vue-uuid": "^2.0.2",
+        "vue2-dropzone": "^3.6.0",
+        "vuex-persistedstate": "^4.0.0-beta.1"
     }
 }
