@@ -22,7 +22,6 @@ if(!function_exists('isAdminUrl')){
 }
 
 
-
 if (! function_exists('apiBaseUrl')){
     function apiBaseUrl(){
         return config('app.api_subdomain').'.'.baseUrl();
