@@ -30,12 +30,18 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        /**
+         * Override fortify's logic to view registration page
+         * in this case we disabled it by redirecting it 
+         * to normal web frontend registration route;
+         */
         Fortify::registerView(function(){
             if(isAdminUrl()){
                 return Redirect::intended(config('app.url').'/register');
             } 
             return view('auth/register');
         });
+
 
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
