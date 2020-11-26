@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Bouncer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        /**
+         * Enable bouncher cross-request caching
+         * Good for performance on stable version deployed on production environment
+         */
+        //Bouncer::cache();
+
+        /**
+         * Disable bouncher caching. Good during development; 
+         * TODO[Stanny] DISABLE THIS ON PRODUCTION
+         */
+        Bouncer::dontCache();
+
+
         /**
          * Fix stupid error about string length on some machine
          * Uncomment to enable
