@@ -52,9 +52,23 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+/*     'url' => env('APP_URL', 'http://localhost'),
+
+    'asset_url' => env('ASSET_URL', null), */
+
+
+
+    'base_url' => env('APP_BASE_URL', 'localhost'), // NEW
+
+    //'url' => env('APP_URL', 'http://localhost'),
+
+    'url' => 'http://'.env('APP_BASE_URL'),
 
     'asset_url' => env('ASSET_URL', null),
+
+    'admin_subdomain' => env('ADMIN_SUBDOMAIN', 'admin'), // NEW
+
+    'api_subdomain' => env('API_SUBDOMAIN', 'api'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +188,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
 
     ],
 

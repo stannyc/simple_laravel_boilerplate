@@ -14,6 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('API')->name('api')->group(function () {
+    Route::namespace('V1')
+        ->prefix('v1')
+        ->name('v1')
+        ->group(function () {
+            
+
+            /**
+             * v1 Public API Routes
+             */
+            Route::get('/', function () {
+                return response('Api v1');
+            })->name('home');
+
+
+
+
+            /**
+             * v1 Protected Api Routed
+             */
+            Route::middleware('auth:sanctum')->group(function(){
+
+            });
+
+
+        });
 });
