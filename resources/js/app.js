@@ -14,7 +14,7 @@ Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
 
-
+/* 
 Vue.directive('clickaway', {
   priority: 700,
   bind (el, binding, vnode){
@@ -33,7 +33,7 @@ Vue.directive('clickaway', {
     document.body.removeEventListener('click', window.event)
   },
   stopProp(event) {event.stopPropagation() }
-})
+}) */
 
 new Vue({
     store: store,

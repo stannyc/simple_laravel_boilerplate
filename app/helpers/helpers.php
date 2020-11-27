@@ -17,10 +17,9 @@ if(!function_exists('isAdminUrl')){
     function isAdminUrl(){
         $uri = explode('.', request()->getHost());
         $subdomain = reset($uri);
-        return $subdomain == config('app.admin_subdomain');
+        return $subdomain === config('app.admin_subdomain');
     }
 }
-
 
 
 if (! function_exists('apiBaseUrl')){

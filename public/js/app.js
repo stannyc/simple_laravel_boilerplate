@@ -3602,9 +3602,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
+    logout: function logout() {
+      var _this = this;
+
+      axios.post(route("logout").url()).then(function (response) {
+        _this.closeProfileMenu();
+
+        window.location = "/login";
+      });
+    },
     togglePagesMenu: function togglePagesMenu() {
       return this.$store.commit("togglePagesMenu");
     },
@@ -48877,14 +48885,6 @@ var render = function() {
                                   _c(
                                     "ul",
                                     {
-                                      directives: [
-                                        {
-                                          name: "clickaway",
-                                          rawName: "v-clickaway",
-                                          value: _vm.closeProfileMenu,
-                                          expression: "closeProfileMenu"
-                                        }
-                                      ],
                                       staticClass:
                                         "absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700",
                                       attrs: { "aria-label": "submenu" },
@@ -48990,43 +48990,50 @@ var render = function() {
                                         )
                                       ]),
                                       _vm._v(" "),
-                                      _c("li", { staticClass: "flex" }, [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200",
-                                            attrs: { href: "#" }
-                                          },
-                                          [
-                                            _c(
-                                              "svg",
-                                              {
-                                                staticClass: "w-4 h-4 mr-3",
-                                                attrs: {
-                                                  "aria-hidden": "true",
-                                                  fill: "none",
-                                                  "stroke-linecap": "round",
-                                                  "stroke-linejoin": "round",
-                                                  "stroke-width": "2",
-                                                  viewBox: "0 0 24 24",
-                                                  stroke: "currentColor"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
+                                      _c(
+                                        "li",
+                                        {
+                                          staticClass: "flex",
+                                          on: { click: _vm.logout }
+                                        },
+                                        [
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200",
+                                              attrs: { href: "#" }
+                                            },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass: "w-4 h-4 mr-3",
                                                   attrs: {
-                                                    d:
-                                                      "M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                                                    "aria-hidden": "true",
+                                                    fill: "none",
+                                                    "stroke-linecap": "round",
+                                                    "stroke-linejoin": "round",
+                                                    "stroke-width": "2",
+                                                    viewBox: "0 0 24 24",
+                                                    stroke: "currentColor"
                                                   }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("span", [_vm._v("Log out")])
-                                          ]
-                                        )
-                                      ])
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                                                    }
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("span", [_vm._v("Log out")])
+                                            ]
+                                          )
+                                        ]
+                                      )
                                     ]
                                   )
                                 ]
@@ -67793,25 +67800,27 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_1__["InertiaApp"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(laravel_jetstream__WEBPACK_IMPORTED_MODULE_2__["InertiaForm"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(portal_vue__WEBPACK_IMPORTED_MODULE_3___default.a);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.directive('clickaway', {
+/* 
+Vue.directive('clickaway', {
   priority: 700,
-  bind: function bind(el, binding, vnode) {
-    window.event = function (event) {
-      console.log('emitting event'); //el.vm.$emit(self.expression,event) 
-    };
+  bind (el, binding, vnode){
+    
+    window.event = function (event) { 
+    	console.log('emitting event')
+    	//el.vm.$emit(self.expression,event) 
+ 	  }
+    el.addEventListener('click', window.stopProp)
+    document.body.addEventListener('click',window.event)
+  },
+  
+  unbind(el, binding, vnode) {
+  	console.log('unbind')
+    el.removeEventListener('click', vnode.stopProp)
+    document.body.removeEventListener('click', window.event)
+  },
+  stopProp(event) {event.stopPropagation() }
+}) */
 
-    el.addEventListener('click', window.stopProp);
-    document.body.addEventListener('click', window.event);
-  },
-  unbind: function unbind(el, binding, vnode) {
-    console.log('unbind');
-    el.removeEventListener('click', vnode.stopProp);
-    document.body.removeEventListener('click', window.event);
-  },
-  stopProp: function stopProp(event) {
-    event.stopPropagation();
-  }
-});
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   store: _store__WEBPACK_IMPORTED_MODULE_4__["default"],
   render: function render(h) {

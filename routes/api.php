@@ -19,9 +19,25 @@ Route::namespace('API')->name('api')->group(function () {
         ->prefix('v1')
         ->name('v1')
         ->group(function () {
-            //ALL API V1 GOES HERE
+            
+
+            /**
+             * v1 Public API Routes
+             */
             Route::get('/', function () {
                 return response('Api v1');
             })->name('home');
+
+
+
+
+            /**
+             * v1 Protected Api Routed
+             */
+            Route::middleware('auth:sanctum')->group(function(){
+
+            });
+
+
         });
 });
