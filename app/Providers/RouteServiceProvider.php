@@ -46,11 +46,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             //Admin subdomain routes
-            Route::domain(adminUrl())                
+            Route::domain(adminUrl())
+                ->middleware('web')
                 ->group(base_path('routes/admin.php'));
-            
+
             //normal main url routes
-            Route::middleware('web')                
+            Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
     }
