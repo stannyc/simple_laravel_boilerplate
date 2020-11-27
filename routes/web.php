@@ -18,6 +18,8 @@ Route::namespace('Web')->group(function () {
         return view('welcome');
     })->name('welcome');
 
+    
+
 
 
 
