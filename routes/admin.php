@@ -49,4 +49,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/register', function () {
         return response("redirect");
     });
+
+
+    Route::InertiaTable('user');
+
 //});

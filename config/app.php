@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\InertiaTableServiceProvider;
+
 return [
 
     /*
@@ -179,6 +181,7 @@ return [
         /*
          * Package Service Providers...
          */
+        InertiaTableServiceProvider::class,
 
         /*
          * Application Service Providers...
